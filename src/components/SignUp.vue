@@ -14,22 +14,20 @@
         <input type="checkbox" v-model="accept">
         <label>Accept Term and Policy</label>
     </div>
+    <div>
+        <label>Skills</label>
+        <input type="text" @keyup="addSkill" v-model="skill">
+    </div>
 <!-- multiple checkbox -->
-    <div>
-        <input type="checkbox" v-model="names" value="NaingWinKo">
-        <label>Naing Win Ko</label>
-    </div>
-    <div>
-        <input type="checkbox" v-model="names" value="WyineMayZin">
-        <label>Wyine May Zin</label>
-    </div>
+   
 
   </form>
   <p>email -{{ email }}</p>
   <p>email -{{ password }}</p>
   <p>role -{{ role }}</p>
   <p>accept-{{ accept }}</p>
-  <p>Names-{{ names }}</p>
+  <p>{{ skills }}</p>
+  
   
 </template>
 
@@ -41,7 +39,18 @@ export default {
         password:"",
         role:"",
         accept:false,
-        names:[]
+        skill:"",
+        skills:[]
+       
+    }
+  },
+  methods:{
+    addSkill(e){
+         if(e.key===",")
+         {
+            this.skills.push(this.skill),
+            this.skill=""
+         }
     }
   }
 }
