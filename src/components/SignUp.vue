@@ -1,9 +1,10 @@
 <template>
-  <form>
+  <form @submit.prevent="submit">
     <label>Email</label>
     <input type="email" required v-model="email">
     <label>Password</label>
     <input type="password" required v-model="password">
+    <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
     <label>Role</label>
     <select v-model="role">
         <option value="developer">Web Developer</option>
@@ -22,6 +23,9 @@
         <p>{{ skill }} <span class="cross" @click="deleteSkill(skill)">&#10006;</span></p>
 
     </div>
+   <div class="aligin">
+    <button class="submit">Create Account</button>
+   </div>
 <!-- multiple checkbox -->
    
 
@@ -44,7 +48,8 @@ export default {
         role:"",
         accept:false,
         skill:"",
-        skills:[]
+        skills:[],
+        errorMessage:""
        
     }
   },
@@ -63,6 +68,11 @@ export default {
        }
       
        )
+    },
+    submit(){
+       if(this.errorMessage.length<8){
+        this.errorMessage="Password Should must at least 8 character"
+       }
     }
   }
 }
@@ -110,4 +120,19 @@ top: 2px;
     cursor: pointer;
     color: red;
  }
+.error{
+    color: red;
+    font-size: x-small;
+}
+.submit{
+    background: blue;
+    padding: 5px;
+    border-radius: 20px;
+    color: white;
+    font-size: x-small;
+    margin: 10px auto;
+    border-color: aqua;
+
+}
+
 </style>
