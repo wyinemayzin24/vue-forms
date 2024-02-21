@@ -10,11 +10,27 @@
         <option value="desiginer">Web Desiginer</option>
 
     </select>
+    <div>
+        <input type="checkbox" v-model="accept">
+        <label>Accept Term and Policy</label>
+    </div>
+<!-- multiple checkbox -->
+    <div>
+        <input type="checkbox" v-model="names" value="NaingWinKo">
+        <label>Naing Win Ko</label>
+    </div>
+    <div>
+        <input type="checkbox" v-model="names" value="WyineMayZin">
+        <label>Wyine May Zin</label>
+    </div>
 
   </form>
   <p>email -{{ email }}</p>
   <p>email -{{ password }}</p>
   <p>role -{{ role }}</p>
+  <p>accept-{{ accept }}</p>
+  <p>Names-{{ names }}</p>
+  
 </template>
 
 <script>
@@ -23,7 +39,9 @@ export default {
     return {
         email:"",
         password:"",
-        role:""
+        role:"",
+        accept:false,
+        names:[]
     }
   }
 }
@@ -57,5 +75,14 @@ export default {
     border: none;
     border-bottom:2px solid #ddd;
     color: #555;
+ }
+ input[type="checkbox"]{
+display: inline-block;
+width: 16px;
+margin: 0 10px 0 0 ;
+position: relative;
+top: 2px;
+
+
  }
 </style>
